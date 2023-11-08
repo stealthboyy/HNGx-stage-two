@@ -1,0 +1,29 @@
+version: '1.0'
+services:
+   mysql:
+      image: mysql:8.0
+      container_name: mysql
+      restart: always
+      env_file:
+         - .env
+      networks:
+         - shipbubble-network
+
+   api:
+      build:
+         context: "."
+         dockerfile: Dockerfile
+      restart: always
+      ports:
+         - 5500:5500
+      depends_on:
+         - mysql
+      env_file:
+         - .env
+      networks:
+         - shipbubble-network
+
+networks:
+   shipbubble-network:
+
+
