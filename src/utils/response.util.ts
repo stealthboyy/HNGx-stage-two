@@ -3,8 +3,7 @@ import { Response } from "express";
 export class ResponseService {
   createdResponse(res: Response, message: string, data: any) {
     return res.status(201).json({
-      success: true,
-      statusCode: 201,
+      status: "success",
       message,
       data,
     });
@@ -12,8 +11,7 @@ export class ResponseService {
 
   okResponse(res: Response, message: string, data?: any) {
     return res.status(200).json({
-      success: true,
-      statusCode: 200,
+      status: "success",
       message,
       data,
     });
@@ -21,8 +19,7 @@ export class ResponseService {
 
   badRequestResponse(res: Response, message: string, errors?: any) {
     return res.status(400).json({
-      success: false,
-      statusCode: 400,
+      status: "error",
       message,
       errors,
     });
@@ -30,33 +27,36 @@ export class ResponseService {
 
   unauthorizedResponse(res: Response, message: string) {
     return res.status(401).json({
-      success: false,
-      statusCode: 401,
+      status: "error",
       message,
     });
   }
 
   forbiddenResponse(res: Response, message: string) {
     return res.status(403).json({
-      success: false,
-      statusCode: 403,
+      status: "error",
       message,
     });
   }
 
   notFoundResponse(res: Response, message: string) {
     return res.status(404).json({
-      success: false,
-      statusCode: 404,
+      status: "error",
       message,
     });
   }
 
   internalServerErrorResponse(res: Response, message?: string) {
     return res.status(500).json({
-      success: false,
-      statusCode: 500,
+      status: "error",
       message: message || "Internal server error",
+    });
+  }
+
+  validationErrorResponse(res: Response, errors: any) {
+    return res.status(422).json({
+      status: "error",
+      errors,
     });
   }
 }

@@ -1,4 +1,4 @@
-import { app, port } from "./app.main";
+import { app, port } from "./main";
 
 app.listen(port, () => {
   console.info(`

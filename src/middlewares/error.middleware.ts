@@ -24,7 +24,14 @@ export class ErrorMiddleware {
 
     // handle joi validation errors
     if (error instanceof ValidationError) {
-      return responseService.badRequestResponse(res, error.message);
+      const errors = [];
+      for (const detail of error.details) {
+        errors.push({
+          field: detail.context.key,
+          message: detail.message,
+        });
+      }
+      return responseService.validationErrorResponse(res, errors);
     }
 
     // handle jwt errors

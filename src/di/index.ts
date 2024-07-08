@@ -1,9 +1,9 @@
 import { PrismaClient } from "@prisma/client";
 import { ContainerBuilder } from "node-dependency-injection";
-import { AuthService } from "../app/auth/auth.service";
-import { UserService } from "../app/user/user.service";
+import { AuthService } from "../api/auth/auth.service";
+import { UserService } from "../api/user/user.service";
 import { JwtService, ResponseService } from "../utils";
-import { TransactionService } from "../app/transaction/transaction.service";
+import { OrganisationService } from "../api/organisation/organisation.service";
 
 // Init services
 export function di(): ContainerBuilder {
@@ -26,7 +26,7 @@ export function di(): ContainerBuilder {
     .addArgument(container.get("service.PrismaService"));
 
   container
-    .register("service.TransactionService", TransactionService)
+    .register("service.OrganisationService", OrganisationService)
     .addArgument(container.get("service.PrismaService"));
 
   return container;

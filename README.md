@@ -1,4 +1,4 @@
-# ETAP Test Case Assessment
+<!-- # ETAP Test Case Assessment
 
 A simple REST API to mock a bus ticketing platform
 
@@ -64,4 +64,4 @@ To run tests, run the following command
 ```bash
 npm run start:migrate:test
 ```
-
+ -->
